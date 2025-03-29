@@ -58,11 +58,11 @@ function getPromiseResult(source) {
  */
 function getFirstResolvedPromiseResult(promises) {
   const newPromise = new Promise((resolve, reject) => {
-    const wrappPromise = promises.map((promise) =>
+    const wrappedPromise = promises.map((promise) =>
       promise.catch(() => undefined)
     );
 
-    Promise.race(wrappPromise).then((result) => {
+    Promise.race(wrappedPromise).then((result) => {
       if (result !== undefined) {
         resolve(result);
       } else {
